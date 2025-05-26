@@ -31,7 +31,7 @@ def fetch_all_zodiacs():
             response.raise_for_status()
             soup = BeautifulSoup(response.text, "html.parser")
 
-            content = soup.select_one('.entry-content /p')
+            content = soup.select_one('.entry-content')
             summary = content.get_text(separator="\n", strip=True) if content else "운세를 불러오지 못했습니다."
 
             save_horoscope(zodiac, summary)
