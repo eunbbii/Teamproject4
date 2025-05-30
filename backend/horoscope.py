@@ -60,9 +60,9 @@ def build_prompt(zodiac: str, date_str: str, external_content: str) -> str:
 {zodiac} 분들을 위한 오늘의 운세 정보를 받았어요:
 
 [운세 원문]
-{external_content}
+{external_content}을 한글로 번역하고 요약.
 
-이 내용을 토대로 {zodiac} 분들의 오늘 하루를 따뜻하게 안내해드릴게요.
+이 내용을 토대로 {zodiac}에 맞는 오늘의 운세를 자연스럽고 편안한 말투로 요약해 주세요.
 
 다음과 같이 작성해주세요:
 - 자연스럽고 편안한 말투로
@@ -70,6 +70,4 @@ def build_prompt(zodiac: str, date_str: str, external_content: str) -> str:
 - 실생활에서 바로 적용할 수 있는 구체적인 조언 포함
 - 희망적이고 긍정적인 메시지로 마무리
 - 전문성은 유지하되 어려운 용어는 피해서 누구나 쉽게 이해할 수 있게
-
-{zodiac} 분들이 오늘 하루를 더 의미 있게 보낼 수 있도록 도와주세요!
 """
