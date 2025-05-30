@@ -53,18 +53,23 @@ def get_zodiac_sign(birth_date_str):
     elif (month == 2 and day >= 19) or (month == 3 and day <= 20):
         return "물고기자리"
 
-def build_prompt(zodiac: str, date_str: str, external_content: str) -> str:
+def build_prompt(zodiac: str, date_str: str, external_content: str, style: str) -> str:
+    style_instructions = {
+        "친구": "친근한 말투로, 진짜 친구 같이 편안하게 작성해줘.",
+        "전문가": "전문 점성술사의 말투로, 신뢰감 있고 명확하게 작성해줘.",
+        "시적": "감성적이고 시적인 문체로, 아름답고 은유적으로 표현해줘."
+    }
     return f"""
 안녕하세요! 오늘은 {date_str}이네요. 저는 여러분의 일상에 작은 영감을 드리는 점성술사입니다.
-
-{zodiac} 분들을 위한 오늘의 운세 정보를 받았어요:
 
 [운세 원문]
 {external_content}을 한글로 번역하고 요약.
 
-이 내용을 토대로 {zodiac}에 맞는 오늘의 운세를 자연스럽고 편안한 말투로 요약해 주세요.
+이 내용을 토대로 오늘의 운세를 {style_instructions[style]} 요약해 주세요.
 
 다음과 같이 작성해주세요:
+- 날짜 언급은 "오늘"로 통일, 날짜 언급x
+- "여러분", "~자리", "~자리야" 같은 표현은 사용하지 마
 - 자연스럽고 편안한 말투로
 - 3-4문장으로 오늘의 전반적인 흐름을 요약
 - 실생활에서 바로 적용할 수 있는 구체적인 조언 포함
