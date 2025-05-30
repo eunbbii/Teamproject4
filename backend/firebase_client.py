@@ -50,3 +50,12 @@ def is_horoscope_saved_today(zodiac: str) -> bool:
     doc_ref = db.collection("horoscopes").document(zodiac).collection("daily").document(today)
     doc = doc_ref.get()
     return doc.exists
+
+# 🚀 요청 로그 저장
+def log_horoscope_request(zodiac: str, user_id: str = "anonymous"):
+    timestamp = datetime.utcnow().isoformat()
+    db.collection("logs").add({
+        "zodiac": zodiac,
+        "user_id": user_id,
+        "requested_at": timestamp
+    })
